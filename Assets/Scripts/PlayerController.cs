@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour
     public float deathHeight = -3f;
     public int lives = 3;
 
+    private bool facingLeft = false;
+    
+
     
 
     private Vector3 respawnPos;
@@ -54,7 +57,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded() == true)
+        if (Input.GetKeyDown(KeyCode.W) && IsGrounded() == true)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
@@ -74,17 +77,24 @@ public class PlayerController : MonoBehaviour
         return isGrounded;
     }
 
+
     private void MovePlayer()
-    {        
-       
+    {
+
         //Get input to move Left
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            
+
             direction = Vector3.left;
             //transform.position += direction * speed * Time.deltaTime;
             rb.MovePosition(transform.position + direction * speed * Time.deltaTime);
-            transform.Rotate(0, 180, 0);
+
+            if (!facingLeft)
+            {
+                transform.Rotate(0, 180, 0);
+                facingLeft = true;
+            }
+            
         }
 
         //Get input to move right
@@ -93,7 +103,12 @@ public class PlayerController : MonoBehaviour
             direction = Vector3.right;
             //transform.position += direction * speed * Time.deltaTime;
             rb.MovePosition(transform.position + direction * speed * Time.deltaTime);
-            transform.Rotate(0, -180, 0);
+
+            if (facingLeft)
+            {
+                transform.Rotate(0, 180, 0);
+                facingLeft = false;
+            }
         }
         
     }
