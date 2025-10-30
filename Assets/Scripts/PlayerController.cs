@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 10f;
     public float groundCheckDist = 1.2f;
     public float deathHeight = -3f;
-    public int lives = 3;
+    public int health = 99;
 
     private bool facingLeft = false;
     
@@ -116,9 +116,9 @@ public class PlayerController : MonoBehaviour
     public void Respawn()
     {
         transform.position = respawnPos;
-        lives--;
+        health--;
 
-        if(lives <= 0)
+        if(health <= 0)
         {
             print("GAME OVER");
         }
