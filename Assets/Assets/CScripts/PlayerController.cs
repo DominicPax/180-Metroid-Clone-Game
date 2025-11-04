@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.W) && IsGrounded() == true)
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && IsGrounded() == true)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
