@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public float speed;
 
-    public bool goingLeft;
+    public bool goingLeft = false;
 
 
 

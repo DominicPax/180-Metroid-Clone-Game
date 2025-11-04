@@ -21,7 +21,8 @@ public class PlayerController : MonoBehaviour
     public int health = 99;
 
     private bool facingLeft = false;
-    
+
+    public GameObject bullet;
 
     
 
@@ -41,6 +42,7 @@ public class PlayerController : MonoBehaviour
     {
         Jump();
         CheckForFallDeath();
+        Shooting();
     }
 
     //Called every 0.02
@@ -123,5 +125,23 @@ public class PlayerController : MonoBehaviour
             print("GAME OVER");
         }
     }
+
+
+    public void Shooting()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && facingLeft)
+        {
+            GameObject newBullet = Instantiate(bullet, transform.position, transform.rotation);
+            newBullet.GetComponent<Bullet>().goingLeft = true;
+        }
+       else if(Input.GetKeyDown(KeyCode.Space) && !facingLeft)
+        {
+            GameObject newBullet = Instantiate(bullet, transform.position, transform.rotation);
+            newBullet.GetComponent<Bullet>().goingLeft = false;
+        }
+    }
+
+
+
 
 }
