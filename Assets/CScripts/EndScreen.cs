@@ -7,6 +7,7 @@ public class EndScreen : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+        print("Quit Game");
     }
 
     public void SwitchScene(int sceneIndex)
@@ -14,5 +15,5 @@ public class EndScreen : MonoBehaviour
         SceneManager.LoadScene(sceneIndex);
     }
 
-    //ss
+    
 }
