@@ -44,4 +44,20 @@ public class Enemy : MonoBehaviour
             direction = Vector3.left;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        {
+            if (other.gameObject.GetComponent<Bullet>())
+            {
+                health--;
+
+                if (health <= 0)
+                {
+                    Destroy(gameObject);
+                }
+            }
+        }
+    }
+
 }
