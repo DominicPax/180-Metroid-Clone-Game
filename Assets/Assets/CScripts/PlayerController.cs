@@ -149,4 +149,10 @@ public class PlayerController : MonoBehaviour
         health = Mathf.Clamp(health, 0, maxHealth);
     }
 
+    public void ExtraHealth(int newHealth)
+    {
+        health += newHealth;
+        health = Mathf.Clamp(health, 0, maxHealth);
+    }
+
 }
