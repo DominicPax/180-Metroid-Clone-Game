@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public float groundCheckDist = 1.2f;
     public float deathHeight = -3f;
     public int health = 99;
+    public int maxHealth = 99;
 
     private bool facingLeft = false;
 
@@ -142,6 +143,10 @@ public class PlayerController : MonoBehaviour
     }
 
 
-
+    public void AddHealth(int newHealth)
+    {
+        health += newHealth;
+        health = Mathf.Clamp(health, 0, maxHealth);
+    }
 
 }
