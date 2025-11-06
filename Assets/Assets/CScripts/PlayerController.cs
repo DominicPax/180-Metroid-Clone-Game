@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     public int health = 99;
     public int maxHealth = 99;
 
+    public bool isInvincible = false;
+
     private bool facingLeft = false;
 
     public GameObject bullet;
@@ -147,6 +149,48 @@ public class PlayerController : MonoBehaviour
     {
         health += newHealth;
         health = Mathf.Clamp(health, 0, maxHealth);
+    }
+
+    public void ExtraHealth(int newHealth)
+    {
+        health += newHealth;
+        health = Mathf.Clamp(health, 0, maxHealth);
+    }
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.GetComponent<Enemy>())
+        {
+            if (isInvincible == false)
+            {
+                health -= 15;
+                StartCoroutine(Blink());
+            }
+        }
+
+    }
+
+    public IEnumerator Blink()
+    {
+        isInvincible = true;
+      for (int i = 0; i < 50; i++)
+        {
+            if (i % 2 == 0)
+            {
+                GetComponent<MeshRenderer>().enabled = false;
+            }
+            else
+            {
+                GetComponent<MeshRenderer>().enabled = true;
+            }
+            yield return new WaitForSeconds(.1f);
+            
+        }
+        GetComponent<MeshRenderer>().enabled = true;
+        isInvincible = false;
+
+
     }
 
 }
