@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     public float deathHeight = -3f;
     public int health = 99;
     public int maxHealth = 99;
+    public float stopShotTime = 1f;
 
     public float stopShotTime = 1f;
 
@@ -29,6 +30,8 @@ public class PlayerController : MonoBehaviour
     public bool stopShot = false;
 
     private bool facingLeft = false;
+
+    public bool stopShot = false;
 
     public GameObject bullet;
 
@@ -166,6 +169,10 @@ public class PlayerController : MonoBehaviour
         //health = Mathf.Clamp(health, 0, maxHealth);
     }
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.GetComponent<Enemy>())
@@ -203,6 +210,7 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator StopShooting()
     {
+<<<<<<< Updated upstream
         stopShot = true;
         yield return new WaitForSeconds(stopShotTime);
         stopShot = false;
@@ -210,4 +218,13 @@ public class PlayerController : MonoBehaviour
 
     }
 
+=======
+        yield return new WaitForSeconds(stopShotTime);
+        stopShot = true;
+       
+
+    }
+
+
+>>>>>>> Stashed changes
 }
