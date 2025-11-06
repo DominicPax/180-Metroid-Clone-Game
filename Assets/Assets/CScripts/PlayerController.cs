@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /*
@@ -21,7 +22,11 @@ public class PlayerController : MonoBehaviour
     public int health = 99;
     public int maxHealth = 99;
 
+    public float stopShotTime = 1f;
+
     public bool isInvincible = false;
+
+    public bool stopShot = false;
 
     private bool facingLeft = false;
 
@@ -132,15 +137,17 @@ public class PlayerController : MonoBehaviour
 
     public void Shooting()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && facingLeft)
+        if (Input.GetKeyDown(KeyCode.Space) && facingLeft && !stopShot)
         {
             GameObject newBullet = Instantiate(bullet, transform.position, transform.rotation);
             newBullet.GetComponent<Bullet>().goingLeft = true;
+            StartCoroutine(StopShooting());
         }
-       else if(Input.GetKeyDown(KeyCode.Space) && !facingLeft)
+       else if(Input.GetKeyDown(KeyCode.Space) && !facingLeft && !stopShot)
         {
             GameObject newBullet = Instantiate(bullet, transform.position, transform.rotation);
             newBullet.GetComponent<Bullet>().goingLeft = false;
+            StartCoroutine(StopShooting());
         }
     }
 
@@ -190,6 +197,15 @@ public class PlayerController : MonoBehaviour
         }
         GetComponent<MeshRenderer>().enabled = true;
         isInvincible = false;
+
+
+    }
+
+    public IEnumerator StopShooting()
+    {
+        stopShot = true;
+        yield return new WaitForSeconds(stopShotTime);
+        stopShot = false;
 
 
     }
