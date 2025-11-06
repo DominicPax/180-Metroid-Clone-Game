@@ -153,12 +153,11 @@ public class PlayerController : MonoBehaviour
 
     public void ExtraHealth(int newHealth)
     {
-        health += newHealth;
-        health = Mathf.Clamp(health, 0, maxHealth);
+        //health += newHealth;
+        maxHealth += newHealth;
+        health = maxHealth;
+        //health = Mathf.Clamp(health, 0, maxHealth);
     }
-
-<<<<<<< HEAD
-=======
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -195,5 +194,4 @@ public class PlayerController : MonoBehaviour
 
     }
 
->>>>>>> d8e5c365369014a23b195650018496e73cf36f80
 }

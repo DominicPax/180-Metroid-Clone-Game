@@ -10,15 +10,22 @@ using UnityEngine;
 
 public class JumpPack : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int jumpValue;
+    public float rotateSpeed = 10f;
 
     // Update is called once per frame
     void Update()
     {
-        
+        //Spin coin on the Y axis
+        transform.Rotate(0, rotateSpeed * Time.deltaTime, 0);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<PlayerController>())
+        {
+            other.GetComponent<PlayerController>().jumpForce += jumpValue;
+            Destroy(gameObject);
+        }
     }
 }
