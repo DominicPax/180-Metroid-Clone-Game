@@ -14,8 +14,8 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if(goingLeft == true)
+
+        if (goingLeft == true)
         {
             transform.position += speed * Vector3.left * Time.deltaTime;
 
@@ -27,5 +27,20 @@ public class Bullet : MonoBehaviour
         }
 
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        {
+            if (other.gameObject.GetComponent<Ground>())
+            {
+
+                {
+                    Destroy(gameObject);
+                }
+
+
+            }
+        }
     }
 }
