@@ -35,11 +35,18 @@ public class HardEnemy : MonoBehaviour
             if (hit.transform.GetComponent<PlayerController>())
             {
                 isMovingLeft = true;
+                print("PlAYER IS ON LEFT");
             }
             else
             {
                 isMovingLeft = false;
+                print("PlAYER IS NOT LEFT");
             }
+        }
+
+        else
+        {
+            isMovingLeft = false;
         }
 
         if (Physics.Raycast(rightOrigin, Vector3.right, out hit, 100f))
@@ -47,12 +54,19 @@ public class HardEnemy : MonoBehaviour
             if (hit.transform.GetComponent<PlayerController>())
             {
                 isMovingRight = true;
+                print("PLAYER IS ON RIGHT");
+
             }
             else
             {
                 isMovingRight = false;
+                print("PlAYER IS NOT RIGHT");
 
             }
+        }
+        else
+        {
+            isMovingRight = false;
         }
     }
 
@@ -61,13 +75,14 @@ public class HardEnemy : MonoBehaviour
     {
         if (isMovingLeft == true)
         transform.position += Vector3.left * 2f * Time.deltaTime;
-
+        print("MOVING LEFT");
     }
 
     private void MoveRight()
     {
         if (isMovingRight == true)
             transform.position += Vector3.right * 2f * Time.deltaTime;
+        print("MOVING RIGHT");
 
     }
 
@@ -76,7 +91,9 @@ public class HardEnemy : MonoBehaviour
         {
             if (other.gameObject.GetComponent<Bullet>())
             {
-                health--;
+                Bullet bullet = other.gameObject.GetComponent<Bullet>();
+
+                health -= bullet.bulletDamage;
 
                 if (health <= 0)
                 {

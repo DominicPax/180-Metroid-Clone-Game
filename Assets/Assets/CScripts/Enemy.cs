@@ -50,7 +50,9 @@ public class Enemy : MonoBehaviour
         {
             if (other.gameObject.GetComponent<Bullet>())
             {
-                health--;
+                Bullet bullet = other.gameObject.GetComponent<Bullet>();
+
+                health -= bullet.bulletDamage;
 
                 if (health <= 0)
                 {
@@ -59,5 +61,7 @@ public class Enemy : MonoBehaviour
             }
         }
     }
+
+ 
 
 }
