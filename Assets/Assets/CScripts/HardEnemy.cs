@@ -27,8 +27,8 @@ public class HardEnemy : MonoBehaviour
         Vector3 leftOrigin, rightOrigin;
 
         //Calculate where to draw the raycast from on the left side
-        leftOrigin = transform.position + new Vector3(-1f, 0, 0);
-        rightOrigin = transform.position + new Vector3(1f, 1, 0);
+        leftOrigin = transform.position + new Vector3(0, 0, 0);
+        rightOrigin = transform.position + new Vector3(0, 0, 0);
 
         if (Physics.Raycast(leftOrigin, Vector3.left, out hit, 100f))
         {
@@ -51,6 +51,7 @@ public class HardEnemy : MonoBehaviour
             else
             {
                 isMovingRight = false;
+
             }
         }
     }

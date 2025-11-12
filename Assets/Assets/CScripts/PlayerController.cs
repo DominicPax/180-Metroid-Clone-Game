@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /*
  * Resendiz Edward
@@ -52,7 +53,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Jump();
-        CheckForFallDeath();
+        DeathScreen();
         Shooting();
     }
 
@@ -62,11 +63,7 @@ public class PlayerController : MonoBehaviour
         MovePlayer();
     }
 
-    private void CheckForFallDeath()
-    {
-        if (transform.position.y < deathHeight)
-            Respawn();
-    }
+   
 
     private void Jump()
     {
@@ -126,14 +123,14 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void Respawn()
+    public void DeathScreen()
     {
-        transform.position = respawnPos;
-        health--;
+        
 
         if (health <= 0)
         {
             print("GAME OVER");
+            SceneManager.LoadScene(2);
         }
     }
 

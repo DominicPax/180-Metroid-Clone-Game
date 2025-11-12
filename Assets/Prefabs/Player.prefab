@@ -127,6 +127,12 @@ MonoBehaviour:
   groundCheckDist: 1.2
   deathHeight: -3
   health: 99
+  maxHealth: 99
+  stopShotTime: 1
+  isInvincible: 0
+  stopShot: 0
+  bullet: {fileID: 0}
+  HeavyBullet: {fileID: 0}
 --- !u!54 &7225115571479242200
 Rigidbody:
   m_ObjectHideFlags: 0
