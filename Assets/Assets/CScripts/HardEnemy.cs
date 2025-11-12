@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class HardEnemy : MonoBehaviour
 {
+
+    public int health = 10;
     private bool isMovingLeft = false;
     private bool isMovingRight = false;
 
@@ -67,4 +69,20 @@ public class HardEnemy : MonoBehaviour
             transform.position += Vector3.right * 2f * Time.deltaTime;
 
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        {
+            if (other.gameObject.GetComponent<Bullet>())
+            {
+                health--;
+
+                if (health <= 0)
+                {
+                    Destroy(gameObject);
+                }
+            }
+        }
+    }
+
 }

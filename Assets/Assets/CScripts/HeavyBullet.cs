@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class HeavyBullet : MonoBehaviour
 {
+
     public float speed;
 
     public bool goingLeft = false;
@@ -49,4 +50,5 @@ public class Bullet : MonoBehaviour
         }
 
     }
+
 }

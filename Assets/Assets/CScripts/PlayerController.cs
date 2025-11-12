@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     public int maxHealth = 99;
     public float stopShotTime = 1f;
 
-  
+
 
     public bool isInvincible = false;
 
@@ -31,11 +31,11 @@ public class PlayerController : MonoBehaviour
 
     private bool facingLeft = false;
 
-   
+
 
     public GameObject bullet;
+    public GameObject HeavyBullet;
 
-    
 
     private Vector3 respawnPos;
 
@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
 
         RaycastHit hit;
 
-        if(Physics.Raycast(transform.position, Vector3.down, out hit, groundCheckDist))
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, groundCheckDist))
         {
             isGrounded = true;
         }
@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour
                 transform.Rotate(0, 180, 0);
                 facingLeft = true;
             }
-            
+
         }
 
         //Get input to move right
@@ -123,7 +123,7 @@ public class PlayerController : MonoBehaviour
                 facingLeft = false;
             }
         }
-        
+
     }
 
     public void Respawn()
@@ -131,7 +131,7 @@ public class PlayerController : MonoBehaviour
         transform.position = respawnPos;
         health--;
 
-        if(health <= 0)
+        if (health <= 0)
         {
             print("GAME OVER");
         }
@@ -146,13 +146,15 @@ public class PlayerController : MonoBehaviour
             newBullet.GetComponent<Bullet>().goingLeft = true;
             StartCoroutine(StopShooting());
         }
-       else if(Input.GetKeyDown(KeyCode.Space) && !facingLeft && !stopShot)
+        else if (Input.GetKeyDown(KeyCode.Space) && !facingLeft && !stopShot)
         {
             GameObject newBullet = Instantiate(bullet, transform.position, transform.rotation);
             newBullet.GetComponent<Bullet>().goingLeft = false;
             StartCoroutine(StopShooting());
         }
     }
+
+    
 
 
     public void AddHealth(int newHealth)
@@ -176,6 +178,14 @@ public class PlayerController : MonoBehaviour
             if (isInvincible == false)
             {
                 health -= 15;
+                StartCoroutine(Blink());
+            }
+        }
+        if (collision.gameObject.GetComponent<HardEnemy>())
+        {
+            if (isInvincible == false)
+            {
+                health -= 35;
                 StartCoroutine(Blink());
             }
         }
@@ -214,9 +224,10 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void HeavyGun()
+    {
 
-       
-
+    }
 
 
 
