@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -8,7 +9,9 @@ public class Bullet : MonoBehaviour
 
     public bool goingLeft = false;
 
+    public int bullet = 1;
 
+    public int heavyBullet = 3;
 
 
     // Update is called once per frame

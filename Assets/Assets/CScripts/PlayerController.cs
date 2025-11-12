@@ -35,8 +35,8 @@ public class PlayerController : MonoBehaviour
 
 
     public GameObject bullet;
-    public GameObject HeavyBullet;
-
+    public GameObject heavyBullet;
+    private GameObject bulletToSpawn;
 
     private Vector3 respawnPos;
 
@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         respawnPos = transform.position;
+        bulletToSpawn = bullet;
     }
 
     // Start is called before the first frame update
@@ -139,13 +140,13 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && facingLeft && !stopShot)
         {
-            GameObject newBullet = Instantiate(bullet, transform.position, transform.rotation);
+            GameObject newBullet = Instantiate(bulletToSpawn, transform.position, transform.rotation);
             newBullet.GetComponent<Bullet>().goingLeft = true;
             StartCoroutine(StopShooting());
         }
         else if (Input.GetKeyDown(KeyCode.Space) && !facingLeft && !stopShot)
         {
-            GameObject newBullet = Instantiate(bullet, transform.position, transform.rotation);
+            GameObject newBullet = Instantiate(bulletToSpawn, transform.position, transform.rotation);
             newBullet.GetComponent<Bullet>().goingLeft = false;
             StartCoroutine(StopShooting());
         }
@@ -221,9 +222,9 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void HeavyGun()
+    public void HeavyGun()
     {
-
+        bulletToSpawn = heavyBullet;
     }
 
 
