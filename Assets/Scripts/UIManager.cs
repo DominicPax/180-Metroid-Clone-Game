@@ -4,6 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+/*
+ * Resendiz Edward
+ * 11/8/25
+ * Handles the ui manager
+ */
+
+
 public class UIManager : MonoBehaviour
 {
     public PlayerController PlayerController;

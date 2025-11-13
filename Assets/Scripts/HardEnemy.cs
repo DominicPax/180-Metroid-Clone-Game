@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+/*
+ * Dominic Paxson
+ * 11/10/25
+ * Handles the Hard Enemy mechanics
+ */
 public class HardEnemy : MonoBehaviour
 {
 
@@ -30,7 +35,7 @@ public class HardEnemy : MonoBehaviour
         leftOrigin = transform.position + new Vector3(0, 0, 0);
         rightOrigin = transform.position + new Vector3(0, 0, 0);
 
-        if (Physics.Raycast(leftOrigin, Vector3.left, out hit, 100f))
+        if (Physics.Raycast(leftOrigin, Vector3.left, out hit, 20f))
         {
             if (hit.transform.GetComponent<PlayerController>())
             {
@@ -49,7 +54,7 @@ public class HardEnemy : MonoBehaviour
             isMovingLeft = false;
         }
 
-        if (Physics.Raycast(rightOrigin, Vector3.right, out hit, 100f))
+        if (Physics.Raycast(rightOrigin, Vector3.right, out hit, 20f))
         {
             if (hit.transform.GetComponent<PlayerController>())
             {

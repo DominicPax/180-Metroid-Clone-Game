@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Dominic Paxson
+ * 11/12/25
+ * Handles the Heavy Bullet pickup
+ */
+
+
 public class HeavyBulletPickup : MonoBehaviour
 {
 

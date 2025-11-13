@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
 
+/*
+ * Dominic Paxson
+ * 11/6/25
+ * Handles the bullet mechanics
+ */
+
+
 public class Bullet : MonoBehaviour
 {
     public float speed;
@@ -18,12 +25,12 @@ public class Bullet : MonoBehaviour
 
         if (goingLeft == true)
         {
-            transform.position += speed * Vector3.left * Time.deltaTime;
+            transform.position += speed * 2 * Vector3.left * Time.deltaTime;
 
         }
         else
         {
-            transform.position += speed * Vector3.right * Time.deltaTime;
+            transform.position += speed * 2 * Vector3.right * Time.deltaTime;
 
         }
 

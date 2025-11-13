@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Dominic Paxson
+ * 11/9/25
+ * Handles the enemy mechanics
+ */
 public class Enemy : MonoBehaviour
 {
 
