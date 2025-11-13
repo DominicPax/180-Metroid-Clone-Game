@@ -10,7 +10,11 @@ public class Portal : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Sets the touched objects position to the teleport points position
-        other.transform.position = teleportPoint.position;
+        if(other.GetComponent<PlayerController>())
+        {
+            other.transform.position = teleportPoint.position;
+        }
+
 
 
 

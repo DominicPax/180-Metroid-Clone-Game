@@ -35,9 +35,8 @@ public class HeavyBullet : MonoBehaviour
         {
             if (other.gameObject.GetComponent<Ground>())
             {
-                {
+
                     Destroy(gameObject);
-                }
             }
             if (other.gameObject.GetComponent<Enemy>())
             {
