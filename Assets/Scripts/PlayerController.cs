@@ -193,7 +193,7 @@ public class PlayerController : MonoBehaviour
     public IEnumerator Blink()
     {
         isInvincible = true;
-      for (int i = 0; i < 50; i++)
+      for (int i = 0; i < 25; i++)
         {
             if (i % 2 == 0)
             {
@@ -203,7 +203,7 @@ public class PlayerController : MonoBehaviour
             {
                 GetComponent<MeshRenderer>().enabled = true;
             }
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(.2f);
             
         }
         GetComponent<MeshRenderer>().enabled = true;
